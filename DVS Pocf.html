@@ -185,7 +185,6 @@
     position: relative;
   }
   .doc-card:hover { border-color: var(--accent); background: rgba(0,212,170,.05); }
-  .doc-card.drag-over { border-color: var(--accent); background: rgba(0,212,170,.12); border-style: solid; box-shadow: 0 0 0 2px rgba(0,212,170,.2); }
   .doc-card.uploaded { border-style: solid; border-color: var(--success); background: rgba(16,185,129,.07); }
   .doc-card.uploaded::after {
     content: '✓';
@@ -458,14 +457,14 @@
     <div class="stage-item" id="nav-s1" onclick="goTo(&#39;s1&#39;)">
       <div class="stage-num" id="sn-1">1</div>
       <div>
-        <div class="stage-label">Document Check</div>
+        <div class="stage-label">Upload &amp; Intake</div>
         <div class="stage-sub">Format · Clarity · Completeness</div>
       </div>
     </div>
     <div class="stage-item" id="nav-s2" onclick="goTo(&#39;s2&#39;)">
       <div class="stage-num" id="sn-2">2</div>
       <div>
-        <div class="stage-label">Read &amp; Extract</div>
+        <div class="stage-label">OCR &amp; Extraction</div>
         <div class="stage-sub">Academic details · Confidence</div>
       </div>
     </div>
@@ -524,25 +523,22 @@
       </div>
 
       <div class="doc-grid">
-        <div class="doc-card" id="card-marksheet" data-doc-type="marksheet">
-          <input type="file" id="input-marksheet" accept=".pdf,.jpg,.jpeg,.png" style="display:none">
+        <div class="doc-card" id="card-marksheet" onclick="fakeUpload(&#39;marksheet&#39;)">
           <div class="doc-icon">📄</div>
           <div class="doc-name">Mark Sheet / Transcript</div>
-          <div class="doc-hint">Drag &amp; drop or click · PDF or JPG · Max 5MB</div>
+          <div class="doc-hint">PDF or JPG · Max 5MB</div>
           <div class="doc-filename" id="fn-marksheet"></div>
         </div>
-        <div class="doc-card" id="card-id" data-doc-type="id">
-          <input type="file" id="input-id" accept=".pdf,.jpg,.jpeg,.png" style="display:none">
+        <div class="doc-card" id="card-id" onclick="fakeUpload(&#39;id&#39;)">
           <div class="doc-icon">🪪</div>
           <div class="doc-name">ID Proof</div>
-          <div class="doc-hint">Drag &amp; drop or click · Aadhaar / Passport</div>
+          <div class="doc-hint">Aadhaar / Passport · PDF or JPG</div>
           <div class="doc-filename" id="fn-id"></div>
         </div>
-        <div class="doc-card" id="card-tc" data-doc-type="tc">
-          <input type="file" id="input-tc" accept=".pdf,.jpg,.jpeg,.png" style="display:none">
+        <div class="doc-card" id="card-tc" onclick="fakeUpload(&#39;tc&#39;)">
           <div class="doc-icon">📋</div>
           <div class="doc-name">Transfer / Migration Cert.</div>
-          <div class="doc-hint">Drag &amp; drop or click · Original scanned copy</div>
+          <div class="doc-hint">Original scanned copy</div>
           <div class="doc-filename" id="fn-tc"></div>
         </div>
       </div>
@@ -559,14 +555,14 @@
     <div class="page" id="page-s1">
       <div class="progress-header">
         <div class="page-header" style="margin:0">
-          <h1>// Stage 1 — Document Check</h1>
+          <h1>// Stage 1 — Upload &amp; Intake</h1>
           <p>File format, clarity, completeness &amp; document type validation</p>
         </div>
         <div class="progress-steps" id="ps-1"></div>
       </div>
 
       <div class="status-bar pass">
-        <span>✓</span> All documents passed validation
+        <span>✓</span> All documents passed intake validation
       </div>
 
       <div class="section-title">File Validation Checks</div>
@@ -590,7 +586,7 @@
 
       <div class="nav-row">
         <button class="btn btn-outline" onclick="goTo(&#39;upload&#39;)">← Back</button>
-        <button class="btn btn-primary" onclick="goTo(&#39;s2&#39;)">Next: Read &amp; Extract →</button>
+        <button class="btn btn-primary" onclick="goTo(&#39;s2&#39;)">Next: OCR &amp; Extraction →</button>
       </div>
     </div>
 
@@ -598,7 +594,7 @@
     <div class="page" id="page-s2">
       <div class="progress-header">
         <div class="page-header" style="margin:0">
-          <h1>// Stage 2 — Read &amp; Extract</h1>
+          <h1>// Stage 2 — OCR &amp; Extraction</h1>
           <p>Academic details extracted with confidence scoring</p>
         </div>
         <div class="progress-steps" id="ps-2"></div>
@@ -871,8 +867,8 @@
       </div>
 
       <div class="section-title">Risk Factor Summary</div>
-      <div class="risk-row"><div class="risk-dot low"></div><strong>Document Check</strong> — No issues <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
-      <div class="risk-row"><div class="risk-dot low"></div><strong>Read &amp; Extract</strong> — High confidence <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
+      <div class="risk-row"><div class="risk-dot low"></div><strong>Upload &amp; Intake</strong> — No issues <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
+      <div class="risk-row"><div class="risk-dot low"></div><strong>OCR &amp; Extraction</strong> — High confidence <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
       <div class="risk-row"><div class="risk-dot med"></div><strong>Structural Authenticity</strong> — TC seal partially unclear <span class="chip chip-yellow" style="margin-left:auto">MED</span></div>
       <div class="risk-row"><div class="risk-dot low"></div><strong>Academic Semantic</strong> — All calculations verified <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
       <div class="risk-row"><div class="risk-dot low"></div><strong>Cross-Doc Consistency</strong> — Identity consistent <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
@@ -938,7 +934,7 @@
       <div class="terminal" id="final-log">
         <div class="log-line info">[ DVS v1.0 ] Pipeline completed at 2024-11-15 14:32:07</div>
         <div class="log-line ok">[ STAGE 1 ] PASS — All documents accepted</div>
-        <div class="log-line ok">[ STAGE 2 ] PASS — Read confidence 94.2%</div>
+        <div class="log-line ok">[ STAGE 2 ] PASS — OCR avg. confidence 94.2%</div>
         <div class="log-line warn">[ STAGE 3 ] WARN — TC seal clarity 68% (below 80% threshold)</div>
         <div class="log-line ok">[ STAGE 4 ] PASS — Academic calculations verified</div>
         <div class="log-line ok">[ STAGE 5 ] PASS — Cross-document consistency confirmed</div>
@@ -967,54 +963,16 @@
     tc: 'transfer_cert.pdf'
   };
 
-  function handleFile(type, fileOrName) {
-    const name = typeof fileOrName === 'string' ? fileOrName : (fileOrName && fileOrName.name) || fakeNames[type];
+  function fakeUpload(type) {
     uploads[type] = true;
     document.getElementById('card-' + type).classList.add('uploaded');
-    document.getElementById('fn-' + type).textContent = name;
+    document.getElementById('fn-' + type).textContent = fakeNames[type];
     checkAllUploaded();
   }
 
   function uploadAll() {
-    ['marksheet','id','tc'].forEach(t => handleFile(t, fakeNames[t]));
+    ['marksheet','id','tc'].forEach(t => fakeUpload(t));
   }
-
-  function setupUploadCards() {
-    ['marksheet','id','tc'].forEach(function(type) {
-      const card = document.getElementById('card-' + type);
-      const input = document.getElementById('input-' + type);
-      if (!card || !input) return;
-
-      card.addEventListener('click', function(e) {
-        if (e.target === input) return;
-        input.click();
-      });
-      input.addEventListener('change', function() {
-        if (input.files && input.files[0]) handleFile(type, input.files[0]);
-        input.value = '';
-      });
-
-      card.addEventListener('dragover', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        card.classList.add('drag-over');
-        e.dataTransfer.dropEffect = 'copy';
-      });
-      card.addEventListener('dragleave', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        card.classList.remove('drag-over');
-      });
-      card.addEventListener('drop', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        card.classList.remove('drag-over');
-        const file = e.dataTransfer.files && e.dataTransfer.files[0];
-        if (file) handleFile(type, file);
-      });
-    });
-  }
-  document.addEventListener('DOMContentLoaded', setupUploadCards);
 
   function checkAllUploaded() {
     const allDone = Object.values(uploads).every(Boolean);
