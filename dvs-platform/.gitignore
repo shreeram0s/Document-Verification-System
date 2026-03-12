@@ -1,0 +1,17 @@
+# Python
+**/.venv/
+**/__pycache__/
+**/*.pyc
+
+# Backend storage
+dvs-platform/backend/storage/
+
+# Frontend
+dvs-platform/frontend/node_modules/
+dvs-platform/frontend/dist/
+dvs-platform/frontend/.vite/
+
+# Env files
+**/.env
+**/env
+
