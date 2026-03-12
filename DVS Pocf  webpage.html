@@ -472,15 +472,15 @@
     <div class="stage-item" id="nav-s3" onclick="goTo(&#39;s3&#39;)">
       <div class="stage-num" id="sn-3">3</div>
       <div>
-        <div class="stage-label">Structural Authenticity</div>
-        <div class="stage-sub">Layout · Seals · Templates</div>
+        <div class="stage-label">Academic Semantic</div>
+        <div class="stage-sub">Stream · Grading · Calculations</div>
       </div>
     </div>
     <div class="stage-item" id="nav-s4" onclick="goTo(&#39;s4&#39;)">
       <div class="stage-num" id="sn-4">4</div>
       <div>
-        <div class="stage-label">Academic Semantic</div>
-        <div class="stage-sub">Stream · Grading · Calculations</div>
+        <div class="stage-label">Structural Authenticity</div>
+        <div class="stage-sub">Layout · Seals · Templates</div>
       </div>
     </div>
     <div class="stage-item" id="nav-s5" onclick="goTo(&#39;s5&#39;)">
@@ -685,7 +685,7 @@
 
       <div class="nav-row">
         <button class="btn btn-outline" onclick="goTo(&#39;s1&#39;)">← Stage 1</button>
-        <button class="btn btn-primary" onclick="goTo(&#39;s3&#39;)">Next: Structural Authenticity →</button>
+        <button class="btn btn-primary" onclick="goTo(&#39;s3&#39;)">Next: Academic Semantic →</button>
       </div>
     </div>
 
@@ -693,10 +693,66 @@
     <div class="page" id="page-s3">
       <div class="progress-header">
         <div class="page-header" style="margin:0">
-          <h1>// Stage 3 — Structural Authenticity</h1>
-          <p>Layout, fonts, seals, watermarks &amp; official template verification</p>
+          <h1>// Stage 3 — Academic Semantic Validation</h1>
+          <p>Subject-stream compatibility, grading scheme &amp; percentage accuracy check</p>
         </div>
         <div class="progress-steps" id="ps-3"></div>
+      </div>
+
+      <div class="status-bar pass" id="s3-status">
+        <span id="s3-status-icon">✓</span> Percentage calculation verified — OK to continue
+      </div>
+
+      <div class="section-title">Marks &amp; Percentage Accuracy</div>
+      <div class="info-block">
+        <table class="kv-table">
+          <tbody>
+            <tr><td>UPLOADED_TOTAL</td><td><span style="font-family:var(--mono)">487</span> / <span style="font-family:var(--mono)">500</span></td></tr>
+            <tr><td>EXTRACTED_PERCENTAGE</td><td><span style="font-family:var(--mono)" id="s3-extracted-pct">97.4%</span></td></tr>
+            <tr><td>COMPUTED_PERCENTAGE</td><td><span style="font-family:var(--mono)" id="s3-computed-pct">—</span></td></tr>
+            <tr><td>VALIDATION_RESULT</td><td><span class="chip chip-green" id="s3-pct-chip">MATCH</span></td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.6">
+          Rule: percentage = (total / max) × 100 (rounded to 1 decimal). If it doesn’t match, the pipeline stops here until corrected.
+        </div>
+      </div>
+
+      <div class="section-title">Stream-Subject Compatibility</div>
+      <div class="check-grid">
+        <div class="check-row"><span class="check-icon">✅</span> Physics — valid for PCM stream</div>
+        <div class="check-row"><span class="check-icon">✅</span> Chemistry — valid for PCM stream</div>
+        <div class="check-row"><span class="check-icon">✅</span> Mathematics — valid for PCM stream</div>
+        <div class="check-row"><span class="check-icon">✅</span> English — mandatory subject present</div>
+      </div>
+
+      <div class="section-title">Grading &amp; Calculation Audit</div>
+      <div class="info-block">
+        <table class="kv-table">
+          <tbody>
+            <tr><td>GRADING_SCHEME</td><td>Marks out of 100 per subject <span class="chip chip-green">VALID</span></td></tr>
+            <tr><td>COMPUTED_TOTAL</td><td>487 (system) vs 487 (document) <span class="chip chip-green">MATCH</span></td></tr>
+            <tr><td>COMPUTED_PCT</td><td><span id="s3-pct-compare">—</span></td></tr>
+            <tr><td>CGPA_CONVERSION</td><td>N/A — Marks system used <span class="chip chip-blue">SKIP</span></td></tr>
+            <tr><td>PASS_STATUS</td><td>All subjects ≥ 33% passing marks <span class="chip chip-green">PASS</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-outline" onclick="goTo(&#39;s2&#39;)">← Stage 2</button>
+        <button class="btn btn-primary" id="s3-next-btn" onclick="goTo(&#39;s4&#39;)">Next: Structural Authenticity →</button>
+      </div>
+    </div>
+
+    <!-- ══ STAGE 4 ══ -->
+    <div class="page" id="page-s4">
+      <div class="progress-header">
+        <div class="page-header" style="margin:0">
+          <h1>// Stage 4 — Structural Authenticity</h1>
+          <p>Layout, fonts, seals, watermarks &amp; official template verification</p>
+        </div>
+        <div class="progress-steps" id="ps-4"></div>
       </div>
 
       <div class="status-bar warn">
@@ -727,45 +783,6 @@
           <tr><td>TRANSFER_CERT</td><td>
             <div class="conf-bar-wrap"><div class="conf-bar"><div class="conf-fill" style="width:68%"></div></div><div class="conf-pct">68%</div></div>
           </td></tr>
-        </tbody></table>
-      </div>
-
-      <div class="nav-row">
-        <button class="btn btn-outline" onclick="goTo(&#39;s2&#39;)">← Stage 2</button>
-        <button class="btn btn-primary" onclick="goTo(&#39;s4&#39;)">Next: Academic Semantic →</button>
-      </div>
-    </div>
-
-    <!-- ══ STAGE 4 ══ -->
-    <div class="page" id="page-s4">
-      <div class="progress-header">
-        <div class="page-header" style="margin:0">
-          <h1>// Stage 4 — Academic Semantic Validation</h1>
-          <p>Subject-stream compatibility, grading scheme &amp; calculation checks</p>
-        </div>
-        <div class="progress-steps" id="ps-4"></div>
-      </div>
-
-      <div class="status-bar pass">
-        <span>✓</span> Academic data is semantically consistent
-      </div>
-
-      <div class="section-title">Stream-Subject Compatibility</div>
-      <div class="check-grid">
-        <div class="check-row"><span class="check-icon">✅</span> Physics — valid for PCM stream</div>
-        <div class="check-row"><span class="check-icon">✅</span> Chemistry — valid for PCM stream</div>
-        <div class="check-row"><span class="check-icon">✅</span> Mathematics — valid for PCM stream</div>
-        <div class="check-row"><span class="check-icon">✅</span> English — mandatory subject present</div>
-      </div>
-
-      <div class="section-title">Grading &amp; Calculation Audit</div>
-      <div class="info-block">
-        <table class="kv-table">
-          <tbody><tr><td>GRADING_SCHEME</td><td>Marks out of 100 per subject <span class="chip chip-green">VALID</span></td></tr>
-          <tr><td>COMPUTED_TOTAL</td><td>487 (system) vs 487 (document) <span class="chip chip-green">MATCH</span></td></tr>
-          <tr><td>COMPUTED_PCT</td><td>97.4% (system) vs 97.4% (document) <span class="chip chip-green">MATCH</span></td></tr>
-          <tr><td>CGPA_CONVERSION</td><td>N/A — Marks system used <span class="chip chip-blue">SKIP</span></td></tr>
-          <tr><td>PASS_STATUS</td><td>All subjects ≥ 33% passing marks <span class="chip chip-green">PASS</span></td></tr>
         </tbody></table>
       </div>
 
@@ -873,8 +890,8 @@
       <div class="section-title">Risk Factor Summary</div>
       <div class="risk-row"><div class="risk-dot low"></div><strong>Document Check</strong> — No issues <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
       <div class="risk-row"><div class="risk-dot low"></div><strong>Read &amp; Extract</strong> — High confidence <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
+      <div class="risk-row"><div class="risk-dot low"></div><strong>Academic Semantic</strong> — % calculation verified <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
       <div class="risk-row"><div class="risk-dot med"></div><strong>Structural Authenticity</strong> — TC seal partially unclear <span class="chip chip-yellow" style="margin-left:auto">MED</span></div>
-      <div class="risk-row"><div class="risk-dot low"></div><strong>Academic Semantic</strong> — All calculations verified <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
       <div class="risk-row"><div class="risk-dot low"></div><strong>Cross-Doc Consistency</strong> — Identity consistent <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
       <div class="risk-row"><div class="risk-dot low"></div><strong>Eligibility Rules</strong> — 100% satisfied <span class="chip chip-green" style="margin-left:auto">LOW</span></div>
 
@@ -1035,6 +1052,63 @@
       const stageNum = parseInt(id.replace('s',''));
       updateProgressDots(stageNum);
     }
+
+    // Run semantic validation when Stage 3 is opened
+    if (id === 's3') {
+      validateStage3Percentage();
+    }
+  }
+
+  function computePercentage(total, max) {
+    if (!Number.isFinite(total) || !Number.isFinite(max) || max <= 0) return null;
+    const pct = (total / max) * 100;
+    return pct.toFixed(1) + '%';
+  }
+
+  function validateStage3Percentage() {
+    const extractedEl = document.getElementById('s3-extracted-pct');
+    const computedEl = document.getElementById('s3-computed-pct');
+    const chipEl = document.getElementById('s3-pct-chip');
+    const statusEl = document.getElementById('s3-status');
+    const statusIconEl = document.getElementById('s3-status-icon');
+    const compareEl = document.getElementById('s3-pct-compare');
+    const nextBtn = document.getElementById('s3-next-btn');
+
+    // Demo values (in a real app these come from extracted OCR + marksheet totals)
+    const total = 487;
+    const max = 500;
+    const extractedPct = (extractedEl && extractedEl.textContent || '').trim();
+
+    const computedPct = computePercentage(total, max);
+    if (computedEl) computedEl.textContent = computedPct ?? '—';
+
+    const matches = computedPct !== null && extractedPct !== '' && computedPct === extractedPct;
+
+    if (compareEl) {
+      compareEl.innerHTML = matches
+        ? `${computedPct} (system) vs ${extractedPct} (document) <span class="chip chip-green">MATCH</span>`
+        : `${computedPct ?? '—'} (system) vs ${extractedPct || '—'} (document) <span class="chip chip-red">MISMATCH</span>`;
+    }
+
+    if (chipEl) {
+      chipEl.textContent = matches ? 'MATCH' : 'MISMATCH';
+      chipEl.className = 'chip ' + (matches ? 'chip-green' : 'chip-red');
+    }
+
+    if (statusEl && statusIconEl) {
+      statusEl.classList.remove('pass', 'warn', 'fail');
+      if (matches) {
+        statusEl.classList.add('pass');
+        statusIconEl.textContent = '✓';
+        statusEl.lastChild.textContent = ' Percentage calculation verified — OK to continue';
+      } else {
+        statusEl.classList.add('fail');
+        statusIconEl.textContent = '✕';
+        statusEl.lastChild.textContent = ' Percentage mismatch — correct marks/percentage to continue';
+      }
+    }
+
+    if (nextBtn) nextBtn.disabled = !matches;
   }
 
   function updateProgressDots(current) {
@@ -1057,8 +1131,8 @@
         navEl.classList.remove('warn','fail');
         navEl.classList.add('done');
         numEl.textContent = '✓';
-        // Stage 3 has a warning
-        if (i === 3) {
+        // Stage 4 has a warning (Structural Authenticity)
+        if (i === 4) {
           navEl.classList.remove('done');
           navEl.classList.add('warn');
           numEl.textContent = '!';
